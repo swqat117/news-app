@@ -10,6 +10,8 @@ import {
 import AppButton from "./AppButton";
 import Icon from "./Icon";
 const ListingDetails = ({ route }) => {
+
+  console.log('route', route.params.content)
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -17,6 +19,10 @@ const ListingDetails = ({ route }) => {
         <View style={styles.detailsContainer}>
           <Text style={styles.title}>{route.params.title}</Text>
           <Text style={styles.subtitle}>{route.params.content}</Text>
+          <AppButton
+            onPress={() => Linking.openURL(route.params.url)}
+            title={"Click here to read full news"}
+          />
           <View style={styles.shareContainer}>
             <View style={styles.iconContainer}>
               <Icon
@@ -50,10 +56,7 @@ const ListingDetails = ({ route }) => {
               <Text style={styles.logoText}>Email</Text>
             </View>
           </View>
-          <AppButton
-            onPress={() => Linking.openURL(route.params.url)}
-            title={"Click here to read full news"}
-          />
+        
         </View>
       </ScrollView>
     </View>
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingBottom: 50,
+    backgroundColor:'#fafafa'
   },
   detailsContainer: { padding: 20 },
   iconContainer: {

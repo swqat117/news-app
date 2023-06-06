@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
 
-const AppButton = ({ title, onPress, color = "#fc5c65" }) => {
+const AppButton = ({ title, onPress, color = "#786767" }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}

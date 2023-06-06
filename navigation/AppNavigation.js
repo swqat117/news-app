@@ -1,12 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import NewsFeed from "../component/NewsFeed";
-import SearchNews from "../component/SearchNews";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { myTheme } from "./navigationColor";
 import MyStack from "./NewsInfoNavigator";
 import NewsSearchNavigation from "./NewsSearchNavigation";
-import About from "../component/About";
+import { View } from "react-native";
+import React from "react";
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
@@ -15,11 +14,12 @@ const AppNavigator = () => {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarActiveBackgroundColor: "#fc5c65",
+          tabBarActiveBackgroundColor: "#786767",
           tabBarActiveTintColor: "white",
           tabBarInactiveTintColor: "#262626",
         }}
       >
+
         <Tab.Screen
           options={{
             title: "News Feed",
@@ -40,16 +40,7 @@ const AppNavigator = () => {
           name="serach"
           component={NewsSearchNavigation}
         />
-        <Tab.Screen
-          options={{
-            title: "About Developer",
-            tabBarIcon: ({ size, color }) => (
-              <MaterialCommunityIcons color={color} size={30} name="face-man" />
-            ),
-          }}
-          name="about"
-          component={About}
-        />
+       
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -3,7 +3,6 @@ import { View, StyleSheet, StatusBar, FlatList, Text } from "react-native";
 import AppInput from "./AppInput";
 import news from "../api/getNews";
 import Card from "./Card";
-import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
 import NoItemFound from "./NoItemFound";
 
@@ -70,7 +69,7 @@ const SearchNews = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: "#ffcccc",
+    backgroundColor:'#fafafa',
     padding: 10,
     flex: 1,
   },

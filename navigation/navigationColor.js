@@ -3,9 +3,9 @@ const myTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: "#FF595A",
-    secondary: "#001233",
-    background: "white",
+    primary: "#DDFCAD",
+    secondary: "#82846D",
+    background: "#646165",
   },
 };
 export { myTheme };

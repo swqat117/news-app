@@ -26,21 +26,23 @@ const Card = ({ title, subtitle, image, onPress }) => {
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
-        <AppButton onPress={onPress} title="Full News Link" />
+        <AppButton onPress={onPress} title="Read more.." />
       </View>
     </TouchableWithoutFeedback>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    borderRadius: 25,
-    overflow: "hidden",
+    backgroundColor: "#fafafa",
+    elevation:4,
+    padding:2,
+    borderRadius: 8,
     marginBottom: 20,
   },
   image: {
-    width: "100%",
-    height: 200,
+    height: 180,
+    borderRadius:8,
+    elevation:4
   },
   detailsConatiner: {
     padding: 20,
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: "#FF595A",
+    color: "#646165",
     marginBottom: 7,
     fontWeight: "bold",
   },

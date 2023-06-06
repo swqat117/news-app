@@ -1,10 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import getNews from "./api/getNews";
-import LottieView from "lottie-react-native";
+import { Provider } from 'react-redux';
 import AppNavigator from "./navigation/AppNavigation";
+import configureStore from './configureStore'
+
 
 export default function App() {
-  return <AppNavigator />;
+  
+  const store = configureStore()
+
+
+  return <Provider store={store}><AppNavigator /></Provider>;
 }

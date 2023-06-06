@@ -10,7 +10,7 @@ const AppInput = ({ icon, serach, onSearch, ...otherProps }) => {
       {serach && (
         <TouchableWithoutFeedback onPress={onSearch}>
           <MaterialCommunityIcons
-            color={"#FF595A"}
+            color={"#786767"}
             size={35}
             name={serach}
             style={styles.icon}
