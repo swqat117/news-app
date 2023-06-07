@@ -35,14 +35,33 @@ export const fetchAllData = () => {
   }
 }
 
+export const deleteDataItem = (filterItem) => {
+    return dispatch => {
+      return AsyncStorage.getItem('NEWS')
+        .then((newsResponse) => {
+            if(newsResponse){
+                const data = JSON.parse(newsResponse)
+                const filtered_data = data.filter((datapoint) =>  datapoint.url !== filterItem.url)
+                console.log('asdasdasd', data.length, filtered_data.length)
+                dispatch(receiveData(filtered_data))
+
+
+            }
+            else{
+            //    news.getNews().then((res) =>{
+            //       storeNews(res.data.articles)
+            //       dispatch(receiveData(res.data.articles))
+            //   });
+            } 
+        })
+    }
+  }
+
 export const fetchNewData = () => {
     return dispatch => {
-        console.log('hit from api')
-
         return news.getNews().then((res) =>{
-            console.log('hit from api')
             storeNews(res.data.articles)
-            dispatch(receiveData(res.data.articles))
+                dispatch(receiveData(res.data.articles))
         });
     }
   }

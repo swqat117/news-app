@@ -9,12 +9,11 @@ import {
   Alert,
 } from "react-native";
 import { connect } from "react-redux";
-import news from "../api/getNews";
 import Card from "./Card";
 
 import LottieView from "lottie-react-native";
 import SwipeableFlatList from "react-native-swipeable-list";
-import { fetchAllData, fetchNewData } from "../actions";
+import { fetchAllData, fetchNewData, deleteDataItem } from "../actions";
 
 const darkColors = {
   background: "#121212",
@@ -31,7 +30,7 @@ const colorEmphasis = {
   disabled: 0.38,
 };
 
-const NewsFeed = ({ navigation, fetchAllData, news }) => {
+const NewsFeed = ({ navigation, fetchAllData, news, fetchNewData, deleteDataItem }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [refresh, onRefresh] = useState(false);
@@ -47,17 +46,12 @@ const NewsFeed = ({ navigation, fetchAllData, news }) => {
     return (
       <View style={styles.qaContainer}>
         <View style={[styles.button, styles.button1]}>
-          <Pressable onPress={() => archiveItem(qaItem.id)}>
+          <Pressable onPress={() => deleteDataItem(qaItem)}>
             <Text style={[styles.buttonText, styles.button1Text]}>Archive</Text>
           </Pressable>
         </View>
-        <View style={[styles.button, styles.button2]}>
-          <Pressable onPress={() => snoozeItem(qaItem.id)}>
-            <Text style={[styles.buttonText, styles.button2Text]}>Snooze</Text>
-          </Pressable>
-        </View>
         <View style={[styles.button, styles.button3]}>
-          <Pressable onPress={() => deleteItem(qaItem.id)}>
+          <Pressable onPress={() => deleteDataItem(qaItem)}>
             <Text style={[styles.buttonText, styles.button3Text]}>Delete</Text>
           </Pressable>
         </View>
@@ -71,7 +65,7 @@ const NewsFeed = ({ navigation, fetchAllData, news }) => {
         <View>
           <Text style={styles.text}>BBC News </Text>
           <SwipeableFlatList
-            onRefresh={() => fetchNewData()}
+            onRefresh={fetchNewData}
             refreshing={refresh}
             shouldBounceOnMount
             data={news}
@@ -154,6 +148,10 @@ const mapDispatchToProps = (dispatch) => {
     fetchNewData: () => {
       dispatch(fetchNewData());
     },
+    deleteDataItem: (data) => {
+      dispatch(deleteDataItem(data));
+
+    }
   };
 };
 
