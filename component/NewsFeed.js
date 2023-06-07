@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
-  FlatList,
-  SafeAreaView,
   View,
   Text,
   Pressable,
-  Alert,
+  TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
 import Card from "./Card";
@@ -30,16 +28,21 @@ const colorEmphasis = {
   disabled: 0.38,
 };
 
-const NewsFeed = ({ navigation, fetchAllData, news, fetchNewData, deleteDataItem }) => {
+const NewsFeed = ({
+  navigation,
+  fetchAllData,
+  news,
+  fetchNewData,
+  deleteDataItem,
+}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [refresh, onRefresh] = useState(false);
-  
+
   useEffect(() => {
     setLoading(true);
     fetchAllData();
     setLoading(false);
-
   }, []);
 
   const QuickActions = (index, qaItem) => {
@@ -64,8 +67,11 @@ const NewsFeed = ({ navigation, fetchAllData, news, fetchNewData, deleteDataItem
       {!loading ? (
         <View>
           <Text style={styles.text}>BBC News </Text>
+          <TouchableOpacity onPress={fetchNewData} style={styles.buttonto}>
+            <Text style={styles.text}>Refresh news from news api </Text>
+          </TouchableOpacity>
           <SwipeableFlatList
-            onRefresh={fetchNewData}
+            onRefresh={fetchAllData}
             refreshing={refresh}
             shouldBounceOnMount
             data={news}
@@ -101,6 +107,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
     padding: 10,
     paddingBottom: 50,
+  },
+  buttonto: {
+    backgroundColor: darkColors.background,
+    marginBottom: 24,
+    borderRadius: 8,
+    paddingTop: 16,
+    elevation: 4,
   },
   text: {
     fontSize: 20,
@@ -150,8 +163,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteDataItem: (data) => {
       dispatch(deleteDataItem(data));
-
-    }
+    },
   };
 };
 

@@ -43,6 +43,7 @@ export const deleteDataItem = (filterItem) => {
                 const data = JSON.parse(newsResponse)
                 const filtered_data = data.filter((datapoint) =>  datapoint.url !== filterItem.url)
                 console.log('asdasdasd', data.length, filtered_data.length)
+                storeNews(filtered_data)
                 dispatch(receiveData(filtered_data))
 
 
