@@ -4,12 +4,12 @@
     "slug": "newsapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/news.png",
+    "icon": "./assets/News.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/news.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/splash_screen.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#786767"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,8 +22,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/News.png",
+        "backgroundColor": "#786767"
       }
     },
     "web": {
